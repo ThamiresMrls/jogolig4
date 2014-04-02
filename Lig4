@@ -1,0 +1,53 @@
+#Importando á biblioteca!
+import Flig4
+
+# Atribuindo variaveis para que não tenha numeros magicos...
+
+
+
+#inicio da apresentação do jogo
+print(" >>>>>>>>>>//// SEJAM BEM-VINDOS AO JODO LIG4 ////<<<<<<<<<< ")
+print()
+print("Objetivo do Jogo: \nPosicionar quatro peças da mesma cor de forma adjacente formando uma linha, coluna ou diagonal.")
+print()
+
+#Tratamento de erro para validação da respostas
+resposta = str.upper(input("Deseja visualizar as regras do jogo: (SIM) ou (NÃO) ? "))
+while (Flig4.validaResposta1(resposta) != True):
+    print("Opção inválida, informe SIM ou NÃO! ")
+    resposta = str.upper(input("Deseja visualizar as regras do jogo: (SIM) ou (NÃO) ? "))
+if(resposta == "SIM"):
+    Flig4.exibeRegras1()
+
+#Tratamento de erro para validação de iniciar
+#Tenho que fazer uma validação de erro aqui.
+iniciar = str.upper( input("Deseja começar o jogo: (SIM) ou (NÃO) ? "))
+while(Flig4.validaResposta1(iniciar) == False):
+    print("Opção inválida, informe SIM ou NÃO! ")
+    iniciar = str.upper( input("Deseja começar o jogo: (SIM) ou (NÃO) ? "))
+    
+
+# Aqui o programa faz as probabilidades de erros, e faz a jogada para jogador 1 e 2
+
+jogador1 = str.upper(input("Jogador 1, informe seu nome: "))
+cor = str.upper (input("Informe uma cor AMARELO ou VERDE: "))
+while(Flig4.validaCor1(cor) != True):
+    print("Cor inválida! Informe á cor AMARELO ou VERDE! ")
+    cor = str.upper(input("Informe uma cor AMARELO ou VERDE: "))
+    
+jogador2 = str.upper(input("JOgador 2, informe seu nome: "))
+cor = str.upper(input("Informe uma cor AMARELO ou VERDE: "))
+while(Flig4.validaCor1(cor) != True):
+    print("Cor inválida! Informe á cor AMARELO ou VERDE! ")
+    cor = str.upper(input("Informe uma cor AMARELO ou VERDE: "))
+for i in range(7):    
+    print("Jogador 1 é a sua vez! ")
+    coluna = int(input( "Informe a coluna entre 1 e 7: "))
+    while(Flig4.validaColuna1(coluna) != True) or (Flig4.colunaCheia1(coluna ) != True):
+        print("Coluna inválida, informe uma coluna válida, entre 1 e 7!  ")
+        coluna = int(input( "Informe a coluna entre 1 e 7: "))
+    
+    Flig4.cair1(coluna, cor)
+    Flig4.exibeTabuleiro1()
+    #print("Jogador 2 é a sua vez! ")
+    
