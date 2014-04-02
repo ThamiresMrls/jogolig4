@@ -1,0 +1,82 @@
+
+
+#Atribuição de valor para vazio
+vazio = ""
+
+#Começando ás funções do jogo "lig4" e validando-ás!
+def validaResposta1(resposta):
+    if(resposta.upper() == "SIM") or (resposta.upper() == "NÃO"):
+        return True
+    else:
+        return False
+def validaCor1 (cor):
+    if(cor.upper() == "AMARELO") or (cor.upper() == "VERDE"):
+        return True
+    else:
+        return False
+    
+def validaColuna1 (coluna):
+    if( coluna <= 7) and (coluna >= 0):
+        return True
+    else:
+        return False
+    
+# Essa função exibe a regar geral do jolo lig 4!    
+def exibeRegras1():
+    print('''(>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> REGRAS DO JOGO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<) \n 
+1. São necessários dois jogadores, e cada um deles deve escolher uma cor.
+2. Os jogadores deverão, alternadamente, colocar uma ficha por vez em uma das colunas do tabuleiro.
+3. A ficha cairá verticalmente, ocupando a casa mais baixa disponível.
+4. Cada jogador deverá tentar posicionar suas peças de modo que 4 delas fiquem unidas formando
+uma linha, uma coluna ou uma diagonal. Não deve haver separação entre as peças.
+5 .Vence o jogador que conseguir ligar quatro de suas peças primeiro.
+6. Caso não haja mais casas livres no tabuleiro, será decretado um empate entre os jogadores.
+7 .Você jogador deve ter a opção de parar o jogo quando desejar.\n
+(>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> BOA SORTE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<) ''')
+    
+#Apresentação do tabuleiro
+
+tabuleiro = [ [ "" , "" , "" , "" , "" , "" , "" ] ,
+              [ "" , "" , "" , "" , "" , "" , "" ] ,
+              [ "" , "" , "" , "" , "" , "" , "" ] ,
+              [ "" , "" , "" , "" , "" , "" , "" ] ,
+              [ "" , "" , "" , "" , "" , "" , "" ] ,
+              [ "" , "" , "" , "" , "" , "" , "" ] ]
+
+# Aqui é a função das condições de onde as peças vai cair e atualiza o tabuleiro.
+# e aqui já faz tudo, não precisa de mas trabalho.
+def cair1 (coluna,cor):
+    coluna = coluna-1
+    linha = 5
+    if(tabuleiro [linha][coluna] == vazio):
+        tabuleiro[linha][coluna ]= cor
+        return tabuleiro
+    
+    while(tabuleiro [linha][coluna] != vazio):
+        linha -= 1
+        if(tabuleiro [linha][coluna] == vazio):
+            tabuleiro[linha][coluna]= cor
+            return tabuleiro
+    else:
+        print("Desculpe esta posição está ocupada")
+
+#Essa função serve, para que o jogador saiba quando a coluna que ele quer jogar
+# estiver cheia e para que ele informe outra.
+def colunaCheia1(coluna):
+    coluna = coluna-1
+    linha = 5
+    if(tabuleiro [linha][coluna] == vazio):
+        return True
+    while(tabuleiro [linha][coluna] != vazio):
+        linha -= 1
+        if(linha == -1):
+            return False
+        elif(tabuleiro [linha][coluna] == vazio):
+            return True
+
+
+        
+#Aqui, exibe o tabuleiro!            
+def exibeTabuleiro1():
+    for i in range(len(tabuleiro)):
+        print(tabuleiro[i])
